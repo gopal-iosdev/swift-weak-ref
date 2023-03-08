@@ -12,7 +12,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		
 		if let vc = window?.rootViewController as? WeatherViewController {
-			let presenter = WeatherDataPresenter(output: WeakRef(vc))
+//			let presenter = WeatherDataPresenter(output: WeakRef(vc))
+            let presenter = WeatherDataPresenter(output: vc)
 			let weatherFetcher = FetchWeatherUseCase(output: presenter)
 			vc.reloadData = weatherFetcher.fetch
 		}
